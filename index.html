@@ -11,16 +11,15 @@
 </head>
 
 <body>
-  <form action="">
-    <input  type="text" placeholder="Title" id="title">
-    <input type="text" placeholder="Author" id="author">
-    <input type="number" placeholder="pages" id="pages">
+  <form action="" class="form">
+    <input type="text" placeholder="Title" id="title" required>
+    <input type="text" placeholder="Author" id="author" required>
+    <input type="number" placeholder="pages" id="pages" required>
     <div>
       <label for="read"> Have you read it?</label>
       <input id="read" class="check" type="checkbox" name="read" value="read">
-
     </div>
-    <button id="confirm__creating" type="button">Add book</button>
+    <button id="confirm__creating">Add book</button>
   </form>
   <div class="books">
     
