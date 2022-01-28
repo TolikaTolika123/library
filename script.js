@@ -33,22 +33,46 @@ function addBooksToLibrary(title, author, pages, read) {
 }
 
 function build() {
-  var output = "";
+  books.innerHTML = '';
   for (var i = 0; i < myLibrary.length; i++) {
-    output += `<div class="book" id="arrayPos-${i}">
-                <button class="book-delete" onClick="del(${i})"><img src="images/x.svg" alt=""></button>
-                <h4 class="book-title">${myLibrary[i].title}</h4>
-                <p class="book-author">${myLibrary[i].author}</p>
-                <p class="book-pages">${myLibrary[i].pages} pages</p>
-                <button class="book-readed" onClick="edit(${i})">${myLibrary[i].read}</button>
-              </div>`;
+    const book = document.createElement('div');
+    book.className = 'book';
+    book.id = `arrayPos-${i}`;
+    
+    const deleteBook = document.createElement('button');
+    deleteBook.className = 'book-delete';
+    deleteBook.setAttribute("onclick", `del(${i})`);
+    deleteBook.innerHTML = '<img src="images/x.svg" alt="x">';
+    book.appendChild(deleteBook);
+
+    const bookTitle = document.createElement('h4');
+    bookTitle.className = 'book-title';
+    bookTitle.innerText = myLibrary[i].title;
+    book.appendChild(bookTitle);
+
+    const bookAuthor = document.createElement('p');
+    bookAuthor.className = 'book-author';
+    bookAuthor.innerText = myLibrary[i].author;
+    book.appendChild(bookAuthor);
+
+    const bookPages = document.createElement('p');
+    bookPages.className = 'book-pages';
+    bookPages.innerText = myLibrary[i].pages;
+    book.appendChild(bookPages);
+
+    const editBook = document.createElement('button');
+    editBook.className = 'book-readed';
+    editBook.setAttribute("onclick", `edit(${i})`);
+    editBook.innerText = myLibrary[i].read;
+    book.appendChild(editBook);
+
+    books.appendChild(book)
   }
-  books.innerHTML = output;
 }
 
 function del(id) {
   myLibrary.splice(id, 1);
-  document.getElementById('arrayPos-' + id).className = 'del';
+  document.querySelector(`#arrayPos-${id}`).remove();
   setTimeout(build, 100);
 }
 
@@ -60,7 +84,7 @@ createBtn.addEventListener('click', () => {
 })
 
 function edit(id) {
-  if (myLibrary[id]._read == 'Read') {
+  if (myLibrary[id]._read === 'Read') {
     myLibrary[id]._read = 'Not read'
   } else {
     myLibrary[id]._read = 'Read';
