@@ -4,7 +4,12 @@ const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
 const read = document.querySelector('#read');
 const books = document.querySelector('.books')
+const form = document.querySelector('.form')
+
 let myLibrary = [];
+
+
+form.addEventListener('submit', createBook)
 
 class Book {
 
@@ -38,7 +43,7 @@ function build() {
     const book = document.createElement('div');
     book.className = 'book';
     book.id = `arrayPos-${i}`;
-    
+
     const deleteBook = document.createElement('button');
     deleteBook.className = 'book-delete';
     deleteBook.setAttribute("onclick", `del(${i})`);
@@ -76,12 +81,13 @@ function del(id) {
   setTimeout(build, 100);
 }
 
-createBtn.addEventListener('click', () => {
+function createBook(e) {
   if (title.vaule != '' && author.value != '' && pages.value != '0') {
     addBooksToLibrary(title.value, author.value, pages.value, read.checked);
     build();
   }
-})
+  e.preventDefault()
+}
 
 function edit(id) {
   if (myLibrary[id]._read === 'Read') {
