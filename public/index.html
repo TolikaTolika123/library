@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+  <link rel="shortcut icon" href="images/logo.svg" type="image/x-icon">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+  <header>
+    <h1 class="header__title">Library</h1>
+    <div class="user-info">
+      <div class="user__signed">
+        <div hidden class="user-pic"></div>
+        <p hidden class="user-name"></p>
+        <button hidden class="sign-out">Sign out</button>
+      </div>
+      <button class="sign-in">Sign in</button>
+    </div>
+  </header>
+
+  <aside>
+    <form action="" class="form">
+      <input type="text" placeholder="Title" id="title" required>
+      <input type="text" placeholder="Author" id="author" required>
+      <input type="number" placeholder="pages" id="pages" required>
+      <div>
+        <label for="read"> Have you read it?</label>
+        <input id="read" class="check" type="checkbox" name="read" value="read">
+      </div>
+      <button id="confirm__creating">Add book</button>
+    </form>
+  </aside>
+  
+  <main class="books"></main>
+  <script src="main.js"></script>
+</body>
+
+</html>

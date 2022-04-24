@@ -4,18 +4,73 @@
 }
 
 body {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
   min-height: 100vh;
   background-color: #b2bec3;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 8fr;
+  grid-template-areas: 'header header'
+                       'aside main';
 }
 
+header {
+  grid-area: header;
+  background-color: #2d3436;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;  
+  padding: 10px;
+}
+
+.header__title {
+  font-size: 45px;
+}
+
+.sign-in, .sign-out {
+  background-color: transparent;
+  color: #fff;
+  border: 0;
+  padding: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.sign-in:hover,
+.sign-out:hover {
+  color: #dfe6e9;
+}
+
+.user__signed {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: #fff;
+}
+
+.user-name {
+  margin-right: 50px;
+  font-size: 24px;
+}
+
+.user-pic {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+aside {
+  display: flex;
+  justify-content: center;
+  grid-area: aside;
+  padding: 30px;
+  background-color: #636e72;
+}
 form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 0 30px;
-  background-color: #636e72;
+  justify-content: start;
 }
 
 form * {
@@ -55,6 +110,7 @@ label {
 }
 
 .books {
+  grid-area: main;
   padding: 20px;
   width: 100%;
   display: flex;
